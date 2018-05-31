@@ -3,9 +3,9 @@ cd /tmp
 > my.log
 echo "find /vmfs/volumes/ -type l | cut -d \"/\" -f4 | sort > /tmp/datastores" >> unmap.sh
 echo "for ds in \`cat datastores\`; do" >> unmap.sh
-echo "  echo \`esxcli hardware clock get\` \"Start unmap Datastore $ds\" >> log.txt" >> unmap.sh
+echo "  echo \`esxcli hardware clock get\` \"Start unmap Datastore \$ds\" >> log.txt" >> unmap.sh
 echo "  esxcli storage vmfs unmap -l \$ds -n 200" >> unmap.sh
-echo "  echo \`esxcli hardware clock get\` \"Ready unmap Datastore $ds\" >> log.txt" >> unmap.sh
+echo "  echo \`esxcli hardware clock get\` \"Ready unmap Datastore \$ds\" >> log.txt" >> unmap.sh
 echo "done" >> unmap.sh
 chmod 744 /tmp/unmap.sh
 nohup /tmp/unmap.sh > /tmp/my.log 2>&1 &
