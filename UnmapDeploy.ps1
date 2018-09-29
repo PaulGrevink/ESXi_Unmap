@@ -117,7 +117,7 @@ function loop_through_all_hosts()
             $time = date -Format "yyyy-MM-dd hh:mm:ss"
             logit "Current timestamp: $time" 1
             Try {
-                Get-VMHost -Name $VMhostName | Foreach {Start-VMHostService -HostService ($_ | Get-VMHostService | Where { $_.Key -eq "TSM-SSH"} )}
+                Get-VMHost -Name $VMhostName | Get-VMHostService | Where-Object {$_.Key -eq 'TSM-SSH'} | Start-VMHostService
                 & "C:\Program Files (x86)\PuTTY\plink.exe" $VMhostUser@$VMhostName -pw $VMhostPass -m .\unmap.plink
             }
             Catch {
