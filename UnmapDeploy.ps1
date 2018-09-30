@@ -139,7 +139,7 @@ function loop_through_all_hosts()
 $currentLocation = Get-Location
 $today = date -Format yyyyMMdd_hhmm
 $project = "Unmap Datastores"
-if($logfile -eq "") {$logfile = "${OutputDirectory}\${project}_$today.log";}
+if($logfile -eq "") {$logfile = "${WorkingDirectory}\${project}_$today.log";}
 write-host "Logfile: $logfile"
 write-output "Unmap Datastores version: 1.0 " | Out-File -FilePath $logfile -Encoding "utf8"
 logit "Date: $today"
