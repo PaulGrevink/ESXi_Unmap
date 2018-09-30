@@ -1,0 +1,3 @@
+# Edit /etc/ssh/sshd_config by removing the 3des-cbc Cipher
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
+sed -i 's/Ciphers aes128-ctr,aes192-ctr,aes256-ctr,3des-cbc/Ciphers aes128-ctr,aes192-ctr,aes256-ctr/' /etc/ssh/sshd_config
